@@ -3,6 +3,8 @@ package br.com.alura.screenmatch.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Comparator;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DadosEpisodio(
         @JsonAlias("Title")
@@ -13,4 +15,5 @@ public record DadosEpisodio(
         String avaliacao,
         @JsonAlias("Released")
         String dataDeLancamento) {
+
 }

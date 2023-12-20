@@ -1,7 +1,5 @@
 package br.com.alura.screenmatch.model;
 
-import org.springframework.core.StandardReflectionParameterNameDiscoverer;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -18,17 +16,22 @@ public class Episodio {
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numero();
 
+        if(dadosEpisodio.avaliacao() != null){
         try{
             this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
         }catch (NumberFormatException ex ){
+            System.out.println("Erro ao converter avaliação para double: " + ex.getMessage());
             this.avaliacao = 0.0;
-        }
+        }}
 
         try {
             this.dataDeLancamento = LocalDate.parse(dadosEpisodio.dataDeLancamento());
         }catch(DateTimeParseException ex){
+            System.out.println("Erro ao converter data de lançamento: " +ex.getMessage());
             this.dataDeLancamento = null;
         }
+
+
     }
 
     public Integer getTemporada() {
